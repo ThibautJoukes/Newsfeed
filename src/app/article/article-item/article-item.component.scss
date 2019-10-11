@@ -1,0 +1,32 @@
+.card {
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+    margin-top: 15px;
+  
+    .newsCard-header{
+      padding: 5px;
+      text-align: center;
+      font-weight: bold;
+
+      p{
+        margin:0;
+      }
+    }
+
+    .newsCard-body {
+      img {
+        width: 100%;
+      }
+    }
+
+    .newsCard-footer{
+      padding: 10px;
+      text-align: justify;
+
+      p{
+        margin:0;
+      }
+    }
+  }
+  
