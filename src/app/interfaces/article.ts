@@ -1,11 +1,11 @@
 export interface Article {
-    Id: number;
-    CurrentSourceId: number;
-    Author: string;
-    Title: string;
-    Description: string;
-    Url: string;
-    UrlToImage: string;
-    PublishedAt: string;
-    Content: string;
+    id: number;
+    currentSourceId: number;
+    author: string;
+    title: string;
+    description: string;
+    url: string;
+    urlToImage: string;
+    publishedAt: string;
+    content: string;
 }

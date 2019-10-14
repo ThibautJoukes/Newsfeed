@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from './article.service';
+import { Subscription } from 'rxjs';
+import { Article } from '../interfaces/article';
 
 @Component({
   selector: 'app-article',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleService: ArticleService) { }
+
+  currentArticles: Article[];
+  loaded: boolean = false;
 
   ngOnInit() {
+    this.articleService.GetAllArticles().subscribe( (articles: Article[]) => {
+      this.currentArticles = articles;
+      this.loaded = true;      
+    });
   }
 
 }

@@ -1,0 +1,30 @@
+.navItems {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-between;
+
+  .items-start,
+  .items-end,
+  .newsTitle {
+    padding: 10px 0px;
+
+    .item {
+      a {
+        color: white;
+        text-decoration: none;
+      }
+      p{
+          color: white;
+          margin: 0;
+          font-size: 1.4rem;
+      }
+    }
+  }
+
+  .items-end,
+  .newsTitle {
+    margin-left: auto;
+  }
+}

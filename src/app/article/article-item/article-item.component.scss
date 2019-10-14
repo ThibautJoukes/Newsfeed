@@ -1,32 +1,38 @@
 .card {
-    -moz-box-shadow: 0 0 3px #ccc;
-    -webkit-box-shadow: 0 0 3px #ccc;
-    box-shadow: 0 0 3px #ccc;
-    margin-top: 15px;
-  
-    .newsCard-header{
-      padding: 5px;
-      text-align: center;
-      font-weight: bold;
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 3px #ccc;
+  margin-top: 15px;
+  height: 400px;
+  overflow: hidden;
 
-      p{
-        margin:0;
-      }
-    }
+  .newsCard-header {
+    padding: 5px;
+    text-align: center;
+    font-weight: bold;
+    height: 20%;
 
-    .newsCard-body {
-      img {
-        width: 100%;
-      }
-    }
-
-    .newsCard-footer{
-      padding: 10px;
-      text-align: justify;
-
-      p{
-        margin:0;
-      }
+    p {
+      margin: 0;
     }
   }
-  
+
+  .newsCard-body {
+    height: 40%;
+    overflow: hidden;
+    img {
+      width: 100%;
+    }
+  }
+
+  .newsCard-footer {
+    padding: 10px;
+    text-align: justify;
+    height: 40%;
+
+    p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+  }
+}

@@ -1,22 +1,19 @@
 <div class="card">
   <div class="newsCard-header">
     <!-- title article -->
-    <p>Philips voelt wereldwijde handelsoorlog in de resultaten - NU.nl</p>
+    <p>{{article.title}}</p>
   </div>
   <div class="newsCard-body">
     <!-- Picture article -->
     <img
-      src="https://media.nu.nl/m/269xp7gaa71j_wd1280.jpg/philips-voelt-wereldwijde-handelsoorlog-in-de-resultaten.jpg"
+      [src]="article.urlToImage"
       alt="article "
     />
   </div>
   <div class="newsCard-footer">
     <!-- content snippet article + author -->
     <p>
-      Philips voelt het toenemende protectionisme in zijn resultaten. Doordat
-      overheden wereldwijd meer importheffingen invoeren, valt de winstmarge bij
-      het onderdeel Connected Care in het derde kwartaal lager uit, meldt
-      Philips donderdag.
+      {{article.description}}
     </p>
   </div>
 </div>
