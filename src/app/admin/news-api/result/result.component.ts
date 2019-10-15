@@ -13,39 +13,53 @@ export class ResultComponent implements OnInit {
 
   constructor() { }
 
-  @Input() articles: newsApiArticle[];
+  private articlesUI: newsApiArticle[] = [];
+  private _articles: newsApiArticle[];
+
+  @Input() set articles(value: newsApiArticle[]) {
+    this._articles = value;
+
+    if (this._articles != null) {
+      // deep copy
+      this.articlesUI = this._articles.map(x => ({ ...x }));
+      this.renderTable();
+    }
+  }
+
+  get articles(): newsApiArticle[] {
+    return this._articles;
+  }
+
+
+
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   displayedColumns: string[] = ['select', 'title', 'description', 'author', 'publishedAt'];
-  dataSource = new MatTableDataSource<newsApiArticle>(this.articles);
-  selection = new SelectionModel<newsApiArticle>(true, this.articles);
+  dataSource = new MatTableDataSource<newsApiArticle>(this.articlesUI);
+  selection = new SelectionModel<newsApiArticle>(true, []);
 
   ngOnInit() {
   }
 
   // Runs when this.articles data has been loaded
-  RenderTable() {
-    this.articles.map(
-      article => {
+  renderTable() {
+    this.articlesUI.map(
+      (article: newsApiArticle) => {
         if (article.description == null || article.description == undefined) {
           article.description = 'No description...';
         }
         article.publishedAt = article.publishedAt.split('T')[0];
       });
-    
-    // re-initialize because data has now loaded;
-    this.dataSource = new MatTableDataSource<newsApiArticle>(this.articles);
-    this.selection = new SelectionModel<newsApiArticle>(true, this.articles);
-  }
 
+    // re-initialize because data has now loaded;
+    this.dataSource = new MatTableDataSource<newsApiArticle>(this.articlesUI);
+  }
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
-    if (this.selection != null) {
-      const numSelected = this.selection.selected.length;
-      const numRows = this.dataSource.data.length;
-      return numSelected === numRows;
-    }
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
   }
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
@@ -60,6 +74,21 @@ export class ResultComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.author + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.author}`;
+  }
+
+  deleteSelection() {
+    this.dataSource.data.forEach(row => {
+      if (this.selection.isSelected(row)) {
+        let index = this.dataSource.data.indexOf(row);
+        this.dataSource.data.splice(index, 1);
+      }
+    });
+
+    this.renderTable();
+  }
+
+  addSelectionToDatabase() {
+
   }
 }

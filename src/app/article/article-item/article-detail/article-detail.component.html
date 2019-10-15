@@ -1,0 +1,7 @@
+<div class="grid-100" *ngIf="article != null; else NoArticle">
+  <h3>{{ article.title }}</h3>
+</div>
+
+<ng-template #NoArticle>
+  <p>No article found, please return to home.</p>
+</ng-template>

@@ -1,10 +1,8 @@
-<div *ngIf="articles != null ? RenderTable() : false"></div>
-
 <div class="grid-100 grid-parent" id="resultActions">
   <h3>Results</h3>
   <div id="actionButtons">
-        <button mat-raised-button color="primary">Add selected data to DB</button>
-        <button mat-raised-button color="warn">Delete selected data from table</button>
+        <button mat-raised-button color="primary" (click)="addSelectionToDatabase()">Add selected data to DB</button>
+        <button mat-raised-button color="warn" (click)="deleteSelection()">Delete selected data from table</button>
   </div>
 </div>
 

@@ -26,6 +26,7 @@ import { FilterComponent } from './filter/filter.component';
 import { NewsApiComponent } from './admin/news-api/news-api.component';
 import { ResultComponent } from './admin/news-api/result/result.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ArticleDetailComponent } from './article/article-item/article-detail/article-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     NewsApiComponent,
     ResultComponent,
     DashboardComponent,
+    ArticleDetailComponent,
   ],
   imports: [
     BrowserModule,

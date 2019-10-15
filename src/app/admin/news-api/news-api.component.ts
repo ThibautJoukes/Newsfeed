@@ -27,7 +27,7 @@ export class NewsApiComponent implements OnInit {
     this.adminService.GetArticlesFromApiTopHeadlines().subscribe(
       articles => {
         this.articlesRetrieved = articles.length;
-        this.articlesTopHeadlines = articles;        
+        this.articlesTopHeadlines = articles;      
       }
     );
   }
@@ -50,9 +50,8 @@ export class NewsApiComponent implements OnInit {
     );
   }
 
-  ShowResultsTopHeadlines(){    
+  ShowResultsTopHeadlines(){
     this.articles = this.articlesTopHeadlines;
-    console.log(this.articles);
   }
   ShowResultsByCountry(){
     this.articles = this.articlesByCountry;
