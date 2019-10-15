@@ -1,0 +1,46 @@
+<div class="grid-50">
+  <h3>Get top headlines articles (NL):</h3>
+  <p *ngIf="articlesRetrieved != null">
+    {{ articlesRetrieved }} articles received.
+    <span class="result" (click)="ShowResultsTopHeadlines()">View result</span>
+  </p>
+  <button mat-raised-button (click)="GetArticles()">Lookup...</button>
+</div>
+
+<div class="grid-50">
+  <h3>Get top headlines articles from country?:</h3>
+  <mat-form-field class="example-full-width" style="margin-right: 10px;">
+    <input matInput type="text" placeholder="CountryCode" #countryCode />
+  </mat-form-field>
+  <p *ngIf="articlesCountryRetrieved != null" style="margin-top: 0;">
+    {{ articlesCountryRetrieved }} articles received.
+    <span class="result" (click)="ShowResultsByCountry()">View result</span>
+  </p>
+  <button mat-raised-button (click)="GetArticlesFromCountry(countryCode)">
+    Lookup...
+  </button>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="grid-50">
+  <h3>Get articles about:</h3>
+  <mat-form-field class="example-full-width" style="margin-right: 10px;">
+    <input matInput type="text" placeholder="subject" #content />
+  </mat-form-field>
+  <p *ngIf="articlesContentRetrieved != null" style="margin-top: 0;">
+    {{ articlesContentRetrieved }} articles received.
+    <span class="result" (click)="ShowResultsByContent()">View result</span>
+  </p>
+  <button mat-raised-button (click)="GetArticlesByContent(content)">
+    Lookup...
+  </button>
+</div>
+
+<div class="grid-100">
+  <mat-divider [inset]="true" style="margin: 20px 0px;"></mat-divider>
+</div>
+
+<div class="grid-100">
+  <app-admin-newsApi-result [articles]="articles"></app-admin-newsApi-result>
+</div>

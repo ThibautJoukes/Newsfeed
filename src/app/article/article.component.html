@@ -1,5 +1,5 @@
-<div class="grid-100" *ngIf="!loaded" style="margin-top: 50px;">
-  <mat-spinner class="spinner"></mat-spinner>
+<div class="grid-100">
+  <app-filter></app-filter>
 </div>
 
 <div
@@ -7,4 +7,8 @@
   *ngFor="let article of currentArticles"
 >
   <app-article-item [article]="article"></app-article-item>
+</div>
+
+<div class="grid-100" *ngIf="!loaded" style="margin-top: 250px;">
+  <mat-spinner class="spinner"></mat-spinner>
 </div>

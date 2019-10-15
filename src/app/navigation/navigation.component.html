@@ -1,17 +1,23 @@
 <div class="grid-container grid-100 navItems">
-  <div class="items-start">
-    <div class="item">
-      <a routerLink="/home">Home</a>
-    </div>
-  </div>
-  <div class="newsTitle">
-    <div class="item">
+  <ul class="items-start">
+    <li class="item">
+      <a routerLink="/home" [routerLinkActive]="'is-active'">Home</a>
+    </li>
+  </ul>
+  <ul class="newsTitle">
+    <li class="item">
       <p>The News</p>
-    </div>
-  </div>
-  <div class="items-end">
-    <div class="item">
-      <a routerLink="/admin">Admin</a>
-    </div>
-  </div>
+    </li>
+  </ul>
+  <ul class="items-end">
+    <li class="item">
+      <button id="admin-dropdown" (click)="toggleAdminDropdown()">
+        Admin <fa-icon [icon]="faChevronDownUp" ></fa-icon>
+      </button>
+      <div id="admin-sub" [hidden]="dropdownHidden" (click)="toggleAdminDropdown()">
+        <a routerLink="/admin">Article news API</a>
+        <a routerLink="/admin/dashboard">Dashboard</a>
+      </div>
+    </li>
+  </ul>
 </div>

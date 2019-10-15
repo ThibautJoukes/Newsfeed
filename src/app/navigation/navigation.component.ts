@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { faChevronDown,faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navigation',
@@ -8,9 +8,21 @@ import { Router } from '@angular/router';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor() { }
+
+  faChevronDownUp = faChevronDown;
+  dropdownHidden: boolean = true;
 
   ngOnInit() {
   }
 
+  toggleAdminDropdown(){
+    this.dropdownHidden = !this.dropdownHidden;
+    if(this.faChevronDownUp == faChevronDown){
+      this.faChevronDownUp = faChevronUp;
+    }
+    else{
+      this.faChevronDownUp = faChevronDown;
+    }
+  }
 }
