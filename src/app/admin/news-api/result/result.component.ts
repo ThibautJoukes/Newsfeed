@@ -30,9 +30,7 @@ export class ResultComponent implements OnInit {
     return this._articles;
   }
 
-
-
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild('mytable', { static: true }) table: MatTable<any>;
 
   displayedColumns: string[] = ['select', 'title', 'description', 'author', 'publishedAt'];
   dataSource = new MatTableDataSource<newsApiArticle>(this.articlesUI);
@@ -78,14 +76,19 @@ export class ResultComponent implements OnInit {
   }
 
   deleteSelection() {
+
     this.dataSource.data.forEach(row => {
       if (this.selection.isSelected(row)) {
-        let index = this.dataSource.data.indexOf(row);
-        this.dataSource.data.splice(index, 1);
+
+        this.dataSource.data = this.dataSource.data.filter((value,index) => {
+          return value.title != row.title;
+        });
+
+        this.selection.deselect(row);
       }
     });
 
-    this.renderTable();
+    this.table.renderRows();
   }
 
   addSelectionToDatabase() {

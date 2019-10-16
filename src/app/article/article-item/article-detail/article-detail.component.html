@@ -1,5 +1,27 @@
 <div class="grid-100" *ngIf="article != null; else NoArticle">
-  <h3>{{ article.title }}</h3>
+  <div id="article">
+    <div id="article-title">
+      <h3>{{ article.title }}</h3>
+    </div>
+    <div id="article-picture">
+      <img [src]="article.urlToImage" alt="article image" />
+    </div>
+    <div id="article-MetaData">
+      <p id="author">{{ article.author }}</p>
+      <p id="published">{{ article.publishedAt }}</p>
+    </div>
+    <div id="article-description">
+      <p>{{article.description}}</p>
+    </div>
+    <div id="article-content">
+      <p>{{ article.content }}</p>
+    </div>
+    <div id="article-url">
+      <p>
+        <a [href]="article.url">Klik hier voor heel het artikel te lezen!</a>
+      </p>
+    </div>
+  </div>
 </div>
 
 <ng-template #NoArticle>

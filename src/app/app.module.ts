@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
@@ -28,6 +29,8 @@ import { ResultComponent } from './admin/news-api/result/result.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ArticleDetailComponent } from './article/article-item/article-detail/article-detail.component';
 
+import { ArticleService } from './article/article.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +46,7 @@ import { ArticleDetailComponent } from './article/article-item/article-detail/ar
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -56,7 +60,7 @@ import { ArticleDetailComponent } from './article/article-item/article-detail/ar
     MatTableModule,
     MatCheckboxModule
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

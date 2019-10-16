@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from './article.service';
-import { Subscription } from 'rxjs';
 import { Article } from '../interfaces/article';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article',
@@ -16,10 +16,18 @@ export class ArticleComponent implements OnInit {
   loaded: boolean = false;
 
   ngOnInit() {
-    this.articleService.GetAllArticles().subscribe( (articles: Article[]) => {
+
+    this.articleService.$articles.subscribe((articles: Article[]) => {
       this.currentArticles = articles;
-      this.loaded = true;      
+      this.loaded = true;
     });
+
+    this.articleService.GetAllArticles().subscribe(
+      articles => {
+        this.articleService.$articles.next(articles);
+      }
+    );
+
   }
 
 }

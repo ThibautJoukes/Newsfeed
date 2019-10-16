@@ -1,17 +1,17 @@
 <div class="grid-100 grid-parent" id="header-filter">
   <div class="grid-33 tablet-grid-50 mobile-grid-100 filter">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Search by author" />
+      <input matInput placeholder="Search by author" [(ngModel)]="author" />
     </mat-form-field>
   </div>
   <div class="grid-33 tablet-grid-50 mobile-grid-100 filter">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Search by title" />
+      <input matInput placeholder="Search by title" [(ngModel)]="title"/>
     </mat-form-field>
   </div>
   <div class="grid-33 tablet-grid-50 mobile-grid-100 filter">
     <mat-form-field class="example-full-width">
-      <input matInput placeholder="Search by content" />
+      <input matInput placeholder="Search by content" [(ngModel)]="content"/>
     </mat-form-field>
   </div>
 
@@ -19,6 +19,6 @@
     class="grid-33 push-66 tablet-grid-50 tablet-push-0 
           mobile-grid-100 mobile-push-0 filter"
   >
-    <button mat-stroked-button>Search!</button>
+    <button mat-stroked-button (click)="articleFilterSearch()">Search!</button>
   </div>
 </div>
