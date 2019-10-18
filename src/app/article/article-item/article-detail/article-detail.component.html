@@ -1,10 +1,10 @@
 <div class="grid-100" *ngIf="article != null; else NoArticle">
-  <div id="article">
+  <div id="article" class="grid-70 tablet-grid-100 mobile-grid-100 grid-parent">
     <div id="article-title">
       <h3>{{ article.title }}</h3>
     </div>
     <div id="article-picture">
-      <img [src]="article.urlToImage" alt="article image" />
+      <img [src]="article.urlToImage" class="grid-100 tablet-grid-70 mobile-grid-100 grid-parent" alt="article image" />
     </div>
     <div id="article-MetaData">
       <p id="author">{{ article.author }}</p>

@@ -31,7 +31,5 @@ export class FilterComponent implements OnInit {
         this.articleService.$articles.next(articles);
       }
     );
-
   }
-
 }

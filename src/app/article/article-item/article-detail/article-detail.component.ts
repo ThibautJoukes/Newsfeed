@@ -23,5 +23,4 @@ export class ArticleDetailComponent implements OnInit {
         this.article.publishedAt = dateParts[0] + ' | ' + dateParts[1].split('+')[0].substr(0,5);
       });
   }
-
 }

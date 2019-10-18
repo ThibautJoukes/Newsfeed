@@ -6,6 +6,10 @@
 
 <main>
   <section class="grid-container">
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </section>
 </main>
+
+<div id="goTop" (click)="goToTop()" class="tablet-grid-100 mobile-grid-100">
+    <fa-icon id="icon" [icon]="faChevronUp"></fa-icon>
+</div>

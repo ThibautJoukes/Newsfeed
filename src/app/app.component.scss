@@ -1,12 +1,75 @@
-header{
-    margin-bottom: 20px;
-    background-color: rgb(209, 18, 18);
+$headerBackground: rgb(209, 18, 18);
+
+header {
+  margin-bottom: 20px;
+  background-color: $headerBackground;
 }
 
-main{
-    margin-bottom: 20px;
+main {
+  margin-bottom: 20px;
 }
 
-.grid-container{
-    position: relative;
+.grid-container {
+  position: relative;
+}
+
+#goTop {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 25px;
+  right: 50px;
+  background-color: $headerBackground;
+  color: white;
+  cursor: pointer;
+  border-radius: 100%;
+
+  #icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover {
+    #icon {
+      animation-name: example;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+      animation-fill-mode: backwards;
+      -moz-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+@keyframes example {
+  0% {
+    top: 50%;
+  }
+  50% {
+    top: 40%;
+  }
+}
+
+@mixin go-top-button {
+  position: fixed;
+  width: 100%;
+  border-radius: 0;
+  bottom: 0;
+  left: 0;
+}
+
+// tablet
+@media (min-width: 768px) and (max-width: 1024px) {
+  #goTop {
+    @include go-top-button;
+  }
+}
+
+// mobile
+@media (max-width: 767px) {
+  #goTop {
+    @include go-top-button;
+  }
 }

@@ -30,3 +30,22 @@ table {
     }
   }
 }
+
+
+// not big screen
+@media (max-width: 1025px) {
+  #resultActions{
+    display: block;
+  }
+}
+
+@media (max-width: 470px) {
+  #actionButtons{
+    display: flex;
+    flex-direction: column;
+
+    button{
+      margin: 5px 0px !important;
+    }
+  }
+}

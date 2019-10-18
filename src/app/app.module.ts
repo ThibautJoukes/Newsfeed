@@ -2,23 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatTableModule} from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { ArticleComponent } from './article/article.component';
 import { ArticleItemComponent } from './article/article-item/article-item.component';
@@ -30,6 +20,8 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ArticleDetailComponent } from './article/article-item/article-detail/article-detail.component';
 
 import { ArticleService } from './article/article.service';
+
+import { SharedMaterialModule } from './shared/shared-material.module';
 
 @NgModule({
   declarations: [
@@ -50,15 +42,8 @@ import { ArticleService } from './article/article.service';
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatGridListModule,
-    MatProgressSpinnerModule,
-    MatDividerModule,
     FontAwesomeModule,
-    MatTableModule,
-    MatCheckboxModule
+    SharedMaterialModule
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from './article.service';
 import { Article } from '../interfaces/article';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-article',
@@ -10,13 +9,12 @@ import { map } from 'rxjs/operators';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor(private articleService: ArticleService) { }
+  constructor(public articleService: ArticleService) { }
 
   currentArticles: Article[];
   loaded: boolean = false;
 
   ngOnInit() {
-
     this.articleService.$articles.subscribe((articles: Article[]) => {
       this.currentArticles = articles;
       this.loaded = true;
@@ -27,7 +25,5 @@ export class ArticleComponent implements OnInit {
         this.articleService.$articles.next(articles);
       }
     );
-
   }
-
 }

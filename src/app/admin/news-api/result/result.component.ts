@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { newsApiArticle } from 'src/app/interfaces/newsApiArticle';
 import { MatTable, MatTableDataSource, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
+import { AdminService } from '../../admin.service';
 
 
 @Component({
@@ -11,17 +12,12 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class ResultComponent implements OnInit {
 
-  constructor() { }
-
-  private articlesUI: newsApiArticle[] = [];
-  private _articles: newsApiArticle[];
+  constructor(private adminService: AdminService) { }
 
   @Input() set articles(value: newsApiArticle[]) {
     this._articles = value;
 
     if (this._articles != null) {
-      // deep copy
-      this.articlesUI = this._articles.map(x => ({ ...x }));
       this.renderTable();
     }
   }
@@ -31,9 +27,10 @@ export class ResultComponent implements OnInit {
   }
 
   @ViewChild('mytable', { static: true }) table: MatTable<any>;
-
+  private _articles: newsApiArticle[];
+  
   displayedColumns: string[] = ['select', 'title', 'description', 'author', 'publishedAt'];
-  dataSource = new MatTableDataSource<newsApiArticle>(this.articlesUI);
+  dataSource = new MatTableDataSource<newsApiArticle>([]);
   selection = new SelectionModel<newsApiArticle>(true, []);
 
   ngOnInit() {
@@ -41,7 +38,7 @@ export class ResultComponent implements OnInit {
 
   // Runs when this.articles data has been loaded
   renderTable() {
-    this.articlesUI.map(
+    this.articles.map(
       (article: newsApiArticle) => {
         if (article.description == null || article.description == undefined) {
           article.description = 'No description...';
@@ -50,7 +47,7 @@ export class ResultComponent implements OnInit {
       });
 
     // re-initialize because data has now loaded;
-    this.dataSource = new MatTableDataSource<newsApiArticle>(this.articlesUI);
+    this.dataSource = new MatTableDataSource<newsApiArticle>(this.articles);
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -77,6 +74,20 @@ export class ResultComponent implements OnInit {
 
   deleteSelection() {
 
+    this.removeFromDataSource();
+    this.table.renderRows();
+  }
+
+  addSelectionToDatabase() {
+    this.adminService.PostArticlesToDatabase(this.selection.selected).subscribe(
+      result => {
+        alert(result);
+        this.removeFromDataSource();
+      }
+    );
+  }
+
+  private removeFromDataSource(){
     this.dataSource.data.forEach(row => {
       if (this.selection.isSelected(row)) {
 
@@ -87,11 +98,5 @@ export class ResultComponent implements OnInit {
         this.selection.deselect(row);
       }
     });
-
-    this.table.renderRows();
-  }
-
-  addSelectionToDatabase() {
-
   }
 }

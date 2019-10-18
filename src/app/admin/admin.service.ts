@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Article } from '../interfaces/article';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { newsApiResult } from '../interfaces/newsApiResult';
 import { newsApiArticle } from '../interfaces/newsApiArticle';
 
 @Injectable({
@@ -13,7 +11,8 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  localApiBase: string = "https://newsapi.org/v2";
+  newsApiLink: string = "https://newsapi.org/v2";
+  databaseLink: string = "https://localhost:44359";
 
   headers = new HttpHeaders({
     'Authorization': 'a4c8252f9d4e4363ad90a43090be172b'
@@ -23,7 +22,7 @@ export class AdminService {
     const requestOptions = {
       headers: this.headers
     };
-    return this.http.get<newsApiArticle[]>(this.localApiBase + "/top-headlines?country=nl", requestOptions).pipe(
+    return this.http.get<newsApiArticle[]>(this.newsApiLink + "/top-headlines?country=nl", requestOptions).pipe(
       map(result => result["articles"])
     );
   }
@@ -32,7 +31,7 @@ export class AdminService {
     const requestOptions = {
       headers: this.headers
     };
-    return this.http.get<newsApiArticle[]>(this.localApiBase + "/top-headlines?country=" + countryCode, requestOptions)
+    return this.http.get<newsApiArticle[]>(this.newsApiLink + "/top-headlines?country=" + countryCode, requestOptions)
       .pipe(
         map(result => result["articles"])
       );
@@ -42,12 +41,12 @@ export class AdminService {
     const requestOptions = {
       headers: this.headers
     };
-    return this.http.get<newsApiArticle[]>(this.localApiBase + "/top-headlines?q=" + content, requestOptions).pipe(
+    return this.http.get<newsApiArticle[]>(this.newsApiLink + "/top-headlines?q=" + content, requestOptions).pipe(
       map(result => result["articles"])
     );
   }
 
-  public PostArticlesToDatabase(article: newsApiArticle[]){
-
+  public PostArticlesToDatabase(articles: newsApiArticle[]) {
+    return this.http.post(this.databaseLink + "/article/publishArticles", articles, { responseType: 'text' });
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faChevronDown,faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronUp, faBars } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navigation',
@@ -11,18 +11,31 @@ export class NavigationComponent implements OnInit {
   constructor() { }
 
   faChevronDownUp = faChevronDown;
-  dropdownHidden: boolean = true;
+  hamburger = faBars;
+  dropdownHidden: boolean = false;
 
   ngOnInit() {
   }
 
-  toggleAdminDropdown(){
+
+  toggleNavigation() {
+    if (document.getElementById("collapse-nav").className.indexOf("collapse") == -1) {
+      document.getElementById("collapse-nav").classList.add("collapse");
+    }
+    else {
+      document.getElementById("collapse-nav").classList.remove("collapse");
+    }
+  }
+
+  toggleAdminDropdown() {
     this.dropdownHidden = !this.dropdownHidden;
-    if(this.faChevronDownUp == faChevronDown){
-      this.faChevronDownUp = faChevronUp;
+    this.faChevronDownUp = (this.faChevronDownUp == faChevronDown) ? faChevronUp : faChevronDown;
+
+    if(this.dropdownHidden || document.getElementById("admin-sub").className.indexOf("collapseInstant") == -1){
+      document.getElementById("admin-sub").classList.add("collapseInstant");
     }
     else{
-      this.faChevronDownUp = faChevronDown;
+      document.getElementById("admin-sub").classList.remove("collapseInstant");
     }
   }
 }
