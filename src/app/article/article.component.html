@@ -3,16 +3,24 @@
   <app-filter></app-filter>
 </div>
 
-<!-- Article items with virtual scroll -->
-<cdk-virtual-scroll-viewport class="articleViewport" itemSize="100">
-  <div
-    class="grid-25 tablet-grid-50 mobile-grid-100"
-    style="margin-top: 15px;"
-    *cdkVirtualFor="let article of articleService.$articles | async"
-  >
-    <app-article-item [article]="article"></app-article-item>
+<div *ngIf="currentArticles == null; else articles">
+  <div class="grid-25 tablet-grid-50 mobile-grid-100" style="margin-top: 15px;">
+    <p>No articles found yet...</p>
   </div>
-</cdk-virtual-scroll-viewport>
+</div>
+
+<ng-template #articles>
+  <!-- Article items with virtual scroll -->
+  <cdk-virtual-scroll-viewport class="articleViewport" itemSize="100">
+    <div
+      class="grid-25 tablet-grid-50 mobile-grid-100"
+      style="margin-top: 15px;"
+      *cdkVirtualFor="let article of currentArticles"
+    >
+      <app-article-item [article]="article"></app-article-item>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</ng-template>
 
 <!-- Spinner-loader -->
 <div class="grid-100" *ngIf="!loaded">

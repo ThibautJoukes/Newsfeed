@@ -12,7 +12,7 @@ export class NavigationComponent implements OnInit {
 
   faChevronDownUp = faChevronDown;
   hamburger = faBars;
-  dropdownHidden: boolean = false;
+  dropdownHidden: boolean = true;
 
   ngOnInit() {
   }
@@ -30,12 +30,5 @@ export class NavigationComponent implements OnInit {
   toggleAdminDropdown() {
     this.dropdownHidden = !this.dropdownHidden;
     this.faChevronDownUp = (this.faChevronDownUp == faChevronDown) ? faChevronUp : faChevronDown;
-
-    if(this.dropdownHidden || document.getElementById("admin-sub").className.indexOf("collapseInstant") == -1){
-      document.getElementById("admin-sub").classList.add("collapseInstant");
-    }
-    else{
-      document.getElementById("admin-sub").classList.remove("collapseInstant");
-    }
   }
 }

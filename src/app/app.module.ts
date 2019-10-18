@@ -22,6 +22,9 @@ import { ArticleDetailComponent } from './article/article-item/article-detail/ar
 import { ArticleService } from './article/article.service';
 
 import { SharedMaterialModule } from './shared/shared-material.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,7 @@ import { SharedMaterialModule } from './shared/shared-material.module';
     ResultComponent,
     DashboardComponent,
     ArticleDetailComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,8 @@ import { SharedMaterialModule } from './shared/shared-material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
-    SharedMaterialModule
+    SharedMaterialModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ArticleService],
   bootstrap: [AppComponent]

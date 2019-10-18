@@ -21,16 +21,13 @@ $navigationBgcHover: rgb(201, 84, 84);
     .item {
       list-style-type: none;
       height: 100%;
-      a {
-        display: block;
-        font-size: 1rem;
-        padding: 10px;
-      }
+
       a,
       #admin-dropdown {
         color: white;
         background-color: $navigationBgc;
         text-decoration: none;
+        display: block;
         font-size: 1rem;
         padding: 10px 0px;
       }
@@ -70,7 +67,7 @@ $navigationBgcHover: rgb(201, 84, 84);
   border-top: 1px solid #805454;
 
   a {
-    padding-left: 10px;
+    padding-left: 10px !important;
     &:hover {
       background-color: $navigationBgcHover;
     }
@@ -82,6 +79,12 @@ $navigationBgcHover: rgb(201, 84, 84);
 }
 .hide-on-mobile {
   display: block;
+}
+
+@media (max-width: 1360px){
+  #admin-sub{
+    margin-left: calc(-150px + 4rem);
+  }
 }
 
 // mobile
@@ -169,10 +172,6 @@ $navigationBgcHover: rgb(201, 84, 84);
   *{
     display: none;
   }
-}
-
-.collapseInstant{
-  display: none !important;
 }
 
 
