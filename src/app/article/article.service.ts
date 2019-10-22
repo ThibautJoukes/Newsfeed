@@ -11,7 +11,6 @@ import { FilterArticle } from '../interfaces/filter-article';
 export class ArticleService {
 
   localApiBase: string = "https://localhost:44359";
-  public $articles: BehaviorSubject<Article[]> = new BehaviorSubject<Article[]>([]);
 
   constructor(private http: HttpClient) {
   }

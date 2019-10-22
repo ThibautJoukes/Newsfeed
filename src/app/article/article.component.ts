@@ -15,15 +15,15 @@ export class ArticleComponent implements OnInit {
   loaded: boolean = false;
 
   ngOnInit() {
-    this.articleService.$articles.subscribe((articles: Article[]) => {
-      this.currentArticles = articles;
-      this.loaded = true;
-    });
-
     this.articleService.GetAllArticles().subscribe(
       articles => {
-        this.articleService.$articles.next(articles);
+        this.currentArticles = articles;
+        this.loaded = true;
       }
     );
+  }
+
+  getNotification($event) {
+    this.currentArticles = $event;
   }
 }

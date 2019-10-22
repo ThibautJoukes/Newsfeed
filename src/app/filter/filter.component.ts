@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ArticleService } from '../article/article.service';
 import { FilterArticle } from '../interfaces/filter-article';
+import { Article } from '../interfaces/article';
 
 @Component({
   selector: 'app-filter',
@@ -18,17 +19,20 @@ export class FilterComponent implements OnInit {
   ngOnInit() {
   }
 
+  @Output() notifyParent: EventEmitter<Article[]> = new EventEmitter();
+
+
   articleFilterSearch() {
 
     let filter: FilterArticle = {
       author: this.author,
       title: this.title,
       content: this.content
-    };   
+    };
 
     this.articleService.GetFilteredArticles(filter).subscribe(
       articles => {
-        this.articleService.$articles.next(articles);
+        this.notifyParent.emit(articles);
       }
     );
   }

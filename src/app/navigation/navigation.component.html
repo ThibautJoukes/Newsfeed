@@ -3,9 +3,11 @@
     <li class="item">
       <p>The News</p>
     </li>
-    <button class="navbar-toggle" (click)="toggleNavigation()">
-      <fa-icon [icon]="hamburger"></fa-icon>
-    </button>
+    <li class="item">
+      <button class="navbar-toggle" name="toggle-navbar-Mobile" (click)="toggleNavigation()">
+        <fa-icon [icon]="hamburger"></fa-icon>
+      </button>
+    </li>
   </ul>
   <div id="collapse-nav">
     <ul class="items-start">
@@ -20,7 +22,7 @@
     </ul>
     <ul class="items-end">
       <li class="item">
-        <button id="admin-dropdown" (click)="toggleAdminDropdown()">
+        <button id="admin-dropdown" name="admin-dropdown" (click)="toggleAdminDropdown()">
           Admin <fa-icon [icon]="faChevronDownUp"></fa-icon>
         </button>
         <div

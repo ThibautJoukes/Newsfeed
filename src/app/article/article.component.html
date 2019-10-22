@@ -1,6 +1,6 @@
 <!-- Filter -->
 <div class="grid-100">
-  <app-filter></app-filter>
+  <app-filter (notifyParent)="getNotification($event)"></app-filter>
 </div>
 
 <div *ngIf="currentArticles == null; else articles">
@@ -14,7 +14,7 @@
   <cdk-virtual-scroll-viewport class="articleViewport" itemSize="100">
     <div
       class="grid-25 tablet-grid-50 mobile-grid-100"
-      style="margin-top: 15px;"
+      style="margin-top: 15px; padding-bottom: 20px;"
       *cdkVirtualFor="let article of currentArticles"
     >
       <app-article-item [article]="article"></app-article-item>

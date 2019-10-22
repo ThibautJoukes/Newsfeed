@@ -4,7 +4,7 @@
     {{ articlesRetrieved }} articles received.
     <span class="result" (click)="ShowResultsTopHeadlines()">View result</span>
   </p>
-  <button mat-raised-button (click)="GetArticles()">Lookup...</button>
+  <button mat-raised-button (click)="GetArticles()" name="lookup-top-headlines">Lookup...</button>
 </div>
 
 <div class="grid-50">
@@ -16,7 +16,7 @@
     {{ articlesCountryRetrieved }} articles received.
     <span class="result" (click)="ShowResultsByCountry()">View result</span>
   </p>
-  <button mat-raised-button (click)="GetArticlesFromCountry(countryCode)">
+  <button mat-raised-button (click)="GetArticlesFromCountry(countryCode)" name="lookup-articles-by-country">
     Lookup...
   </button>
 </div>
@@ -32,7 +32,7 @@
     {{ articlesContentRetrieved }} articles received.
     <span class="result" (click)="ShowResultsByContent()">View result</span>
   </p>
-  <button mat-raised-button (click)="GetArticlesByContent(content)">
+  <button mat-raised-button (click)="GetArticlesByContent(content)" name="lookup-articles-by-content">
     Lookup...
   </button>
 </div>
