@@ -34,21 +34,23 @@ export class ArticleService {
 
   public GetAllArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.localApiBase + "/article").pipe(
-      map(articles => {
-        articles.map(article => {
+      map(articles => {       
+        articles["articles"].map(article => {
           if (article.urlToImage == null || article.urlToImage == undefined) {
             article.urlToImage = 'https://images.pexels.com/photos/102720/pexels-photo-102720.jpeg?cs=srgb&dl=finance-financial-times-news-102720.jpg&fm=jpg';
           }
+
           if (article.description == null && article.content != null) {
             article.description = article.content.substring(0, 100) + '...';
           }
+
           if (article.description == null && article.content == null) {
             article.description = "Dit artikel bevat geen content..."
           }
 
           return article;
         })
-        return articles;
+        return articles["articles"];
       }),
       shareReplay()
     );
@@ -58,20 +60,22 @@ export class ArticleService {
 
     return this.http.post<Article[]>(this.localApiBase + "/article/filter", filter).pipe(
       map(articles => {
-        articles.map(article => {
+        articles["articles"].map(article => {
           if (article.urlToImage == null || article.urlToImage == undefined) {
             article.urlToImage = 'https://images.pexels.com/photos/102720/pexels-photo-102720.jpeg?cs=srgb&dl=finance-financial-times-news-102720.jpg&fm=jpg';
           }
+
           if (article.description == null && article.content != null) {
             article.description = article.content.substring(0, 100) + '...';
           }
+          
           if (article.description == null && article.content == null) {
             article.description = "Dit artikel bevat geen content..."
           }
 
           return article;
         })
-        return articles;
+        return articles["articles"];
       }),
       shareReplay()
     );

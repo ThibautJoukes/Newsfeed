@@ -9,14 +9,14 @@ import { Article } from '../interfaces/article';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor(public articleService: ArticleService) { }
+  constructor(private articleService: ArticleService) { }
 
-  currentArticles: Article[];
-  loaded: boolean = false;
+  public currentArticles: Article[] = [];
+  public loaded: boolean = false;
 
   ngOnInit() {
     this.articleService.GetAllArticles().subscribe(
-      articles => {
+      articles => {        
         this.currentArticles = articles;
         this.loaded = true;
       }
