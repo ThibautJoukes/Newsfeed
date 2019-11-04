@@ -25,6 +25,7 @@ import { SharedMaterialModule } from './shared/shared-material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
+import { DefaultTextPipe } from './pipes/default-text.pipe';
 
 enableProdMode();
 
@@ -39,7 +40,8 @@ enableProdMode();
     ResultComponent,
     DashboardComponent,
     ArticleDetailComponent,
-    AdminComponent
+    AdminComponent,
+    DefaultTextPipe
   ],
   imports: [
     BrowserModule,
