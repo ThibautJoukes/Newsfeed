@@ -26,6 +26,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
 import { DefaultTextPipe } from './pipes/default-text.pipe';
+import { PipeDescriptionPipe } from './pipes/pipe-description.pipe';
+import { PipeUrlToImagePipe } from './pipes/pipe-url-to-image.pipe';
 
 enableProdMode();
 
@@ -41,7 +43,9 @@ enableProdMode();
     DashboardComponent,
     ArticleDetailComponent,
     AdminComponent,
-    DefaultTextPipe
+    DefaultTextPipe,
+    PipeDescriptionPipe,
+    PipeUrlToImagePipe
   ],
   imports: [
     BrowserModule,
