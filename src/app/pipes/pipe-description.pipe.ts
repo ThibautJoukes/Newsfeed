@@ -7,7 +7,7 @@ export class PipeDescriptionPipe implements PipeTransform {
 
   transform(value: string, ...args: any[]): string {
     
-    if(value == null || value == "" || value == undefined){
+    if(value === null || value === "" || value === undefined){
       return "Dit artikel bevat geen content...";
     }
 
