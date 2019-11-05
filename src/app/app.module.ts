@@ -25,9 +25,8 @@ import { SharedMaterialModule } from './shared/shared-material.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
-import { DefaultTextPipe } from './pipes/default-text.pipe';
-import { PipeDescriptionPipe } from './pipes/pipe-description.pipe';
-import { PipeUrlToImagePipe } from './pipes/pipe-url-to-image.pipe';
+import { PipeDescriptionPipe } from './pipes/description.pipe';
+import { PipeUrlToImagePipe } from './pipes/urlToImage.pipe';
 
 enableProdMode();
 
@@ -43,7 +42,6 @@ enableProdMode();
     DashboardComponent,
     ArticleDetailComponent,
     AdminComponent,
-    DefaultTextPipe,
     PipeDescriptionPipe,
     PipeUrlToImagePipe
   ],
