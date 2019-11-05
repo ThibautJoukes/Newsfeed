@@ -15,12 +15,18 @@ export class ArticleDetailComponent implements OnInit {
   article: Article;
 
   ngOnInit() {
-    this.articleService.GetArticleById(this.route.snapshot.params['id']).subscribe(
-      result => {
-        this.article = result;
 
-        let dateParts = this.article.publishedAt.split('T');
-        this.article.publishedAt = dateParts[0] + ' | ' + dateParts[1].split('+')[0].substr(0,5);
-      });
+    this.article = this.route.snapshot.data.article;
+
+    let dateParts = this.article.publishedAt.split('T');
+    this.article.publishedAt = dateParts[0] + ' | ' + dateParts[1].split('+')[0].substr(0, 5);
+
+    // this.articleService.GetArticleById(this.route.snapshot.params['id']).subscribe(
+    //   result => {
+    //     this.article = result;
+
+    //     let dateParts = this.article.publishedAt.split('T');
+    //     this.article.publishedAt = dateParts[0] + ' | ' + dateParts[1].split('+')[0].substr(0, 5);
+    //   });
   }
 }
