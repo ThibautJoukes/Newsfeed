@@ -16,17 +16,7 @@ export class ArticleComponent implements OnInit {
   public loaded: boolean = true;
 
   ngOnInit() {
-
-
     this.currentArticles = this.route.snapshot.data.articles;
-    
-
-    // this.articleService.GetAllArticles().subscribe(
-    //   articles => {        
-    //     this.currentArticles = articles;
-    //     this.loaded = true;
-    //   }
-    // );
   }
 
   getNotification($event) {
