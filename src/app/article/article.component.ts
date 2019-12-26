@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from './article.service';
 import { Article } from '../interfaces/article';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-article',
@@ -9,18 +10,13 @@ import { Article } from '../interfaces/article';
 })
 export class ArticleComponent implements OnInit {
 
-  constructor(private articleService: ArticleService) { }
+  constructor(private articleService: ArticleService, private route: ActivatedRoute) { }
 
   public currentArticles: Article[] = [];
-  public loaded: boolean = false;
+  public loaded: boolean = true;
 
   ngOnInit() {
-    this.articleService.GetAllArticles().subscribe(
-      articles => {        
-        this.currentArticles = articles;
-        this.loaded = true;
-      }
-    );
+    this.currentArticles = this.route.snapshot.data.articles;
   }
 
   getNotification($event) {
